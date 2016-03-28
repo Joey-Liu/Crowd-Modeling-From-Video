@@ -20,7 +20,10 @@ for i = 1 : size(fVels, 1)
 %        end
 %    end
     %cellfun(@(x)trajClusterDistance(x, testVel), ERvels);
-    [tmp, idx(i)] = min(cellfun(@(x)trajClusterDistance(x, fVels{i, 1}), centroids));
+    [tmp, res] = min(cellfun(@(x)trajClusterDistance(x, fVels{i, 1}), centroids));
+    if(tmp <= 300)
+        idx(i) = res;
+    end
 end
 
 end
