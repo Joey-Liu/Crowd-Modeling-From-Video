@@ -1,14 +1,15 @@
-clear; clc
+%clear; clc
 %load('trajData.mat');
-tracks24Aug;
-trajTmp = struct2cell(TRACK);
-trajCell = cell(size(trajTmp, 1), 1);
-for i = 1 : size(trajTmp, 1)
-      traj = trajTmp{i, 1};
-      traj(:, 2) = 480 - traj(:, 2);
-      trajCell{i, 1} = traj(:, 1:2);
-end
-
+% tracks24Aug;
+% trajTmp = struct2cell(TRACK);
+% trajCell = cell(size(trajTmp, 1), 1);
+% for i = 1 : size(trajTmp, 1)
+%       traj = trajTmp{i, 1};
+%       traj(:, 2) = 480 - traj(:, 2);
+%       trajCell{i, 1} = traj(:, 1:2);
+% end
+load traj26
+trajCell = traj26;
 %% ===============================part I Initialization====================
 width = 640; heigth = 480;
 delta = 20;
@@ -83,7 +84,7 @@ maxIteration = 10;
 % omega = 2;
 % for i = 1 : erNUM
 %     ERvels{i, 1} = reviseERvel(ERvels{i, 1}, distanceWeightedMat,cWeightedVec, rWeightedVec, omega, delta);
-% end
+%x end
 
 % 优化,向量化  之前实现
 reviseCentroids = centroids;
@@ -124,5 +125,5 @@ for cnt = 1 : erNum
 end
 
 %% =========================Part III 产生概率表并仿真预测=====================
-SRERProbilities = getSRERProbilities(idx, erNum, trajCell, trajNum);
+%SRERProbilities = getSRERProbilities(idx, erNum, trajCell, trajNum);
 

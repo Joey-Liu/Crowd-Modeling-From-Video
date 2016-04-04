@@ -1,4 +1,4 @@
-predictedIndex = 158;
+predictedIndex = 133;
 figure();
 scatter(trajCell{predictedIndex}(:, 1), trajCell{predictedIndex}(:, 2));
 axis([0 640 0 500]);
@@ -28,10 +28,13 @@ figure(); scatter(x, y);axis([0 640 0 500]);
 curPosX = x(end); curPosY = y(end);
 while ~outOfBounds(width, heigth, curPosX, curPosY)
     hold on;
-    scatter(curPosX, curPosY, 'bx');
+    scatter(curPosX, curPosY, 'ro');
+    prePosX = curPosX; prePosY = curPosY;
     curPosX = curPosX + reviseCentroids{predictedIdx}{curRow, curCol}(1,1);
     curPosY = curPosY + reviseCentroids{predictedIdx}{curRow, curCol}(1,2);
-    
+    if(prePosX == curPosX && curPosY == prePosY)
+        break;
+    end
     fprintf('\nProgram paused. Press enter to continue.\n');
     pause;
     curCol = int32(curPosX / delta); curRow = int32(curPosY / delta);

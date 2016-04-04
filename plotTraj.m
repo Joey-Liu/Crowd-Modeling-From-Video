@@ -9,7 +9,7 @@
 % end
 
 % figure()
-% for i = 1 : 474
+% for i = 1 : size(trajCell, 1)
 %     hold on;
 %     plot(trajCell{i, 1}(:, 1), trajCell{i, 1}(:, 2), 'b.');
 % end
